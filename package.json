@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "dev": "nx run-many -t serve"
+  },
+  "devDependencies": {
+    "@nx/vite": "^20.6.2",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "nx": "^20.6.2",
+    "vite": "^6.2.2"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
