@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "projectType": "application",
+  "sourceRoot": "apps/server/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "dependsOn": ["^build"],      
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "main": "apps/server/src/main.ts",
+        "outputPath": "dist/apps/server",
+        "tsConfig": "apps/server/tsconfig.app.json",
+        "webpackConfig": "apps/server/webpack.config.js"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "server:build"
+      }
+    }
+  }
+}

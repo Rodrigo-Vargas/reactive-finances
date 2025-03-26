@@ -1,5 +1,7 @@
 {
   "name": "client",
+  "projectType": "application",
+  "sourceRoot": "apps/client/src",
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -8,7 +10,8 @@
     "serve": {
       "executor": "@nx/vite:dev-server",
       "options": {
-        "buildTarget": "client:build"
+        "buildTarget": "client:build",
+        "proxyConfig": "apps/client/proxy.conf.json"
       }
     }
   }
