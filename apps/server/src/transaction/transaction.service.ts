@@ -8,6 +8,6 @@ export class TransactionService {
   ){}
 
   findAll() {
-    return this.prisma.transaction.findMany();
+    return this.prisma.transactions.findMany();
   }
 }

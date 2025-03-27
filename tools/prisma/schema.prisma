@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Transaction {
-  id         String      @id @default(cuid())
+model transactions {
+  id            String      @id @default(cuid())
+  description   String
+  amount        Int
+  date          DateTime
+  type          String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }

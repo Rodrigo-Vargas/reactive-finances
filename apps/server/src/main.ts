@@ -10,6 +10,9 @@ async function bootstrap() {
     logger: process.env.NODE_ENV === "development" ? ["debug"] : ["error", "warn", "log"],
   });
 
+  const globalPrefix = "api";
+  app.setGlobalPrefix(globalPrefix);
+
   const configService = app.get(ConfigService<Config>);
 
   // Port
