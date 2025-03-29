@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { AxiosResponse } from "axios";
 import { axios } from "../../libs/axios";
-import { TransactionDto } from "../../dto/transaction";
+import { TransactionDto } from "../../../../../libs/dto/src/transaction/transaction";
 import { TRANSACTIONS_KEY } from "../../constants/query-keys";
 
 export const fetchTransactions = async () => {

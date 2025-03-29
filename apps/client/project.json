@@ -5,7 +5,10 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "sourceRoot": "apps/client"
+      "sourceRoot": "apps/client",
+      "options": {
+        "outputPath": "dist/apps/client"
+      }
     },
     "serve": {
       "executor": "@nx/vite:dev-server",

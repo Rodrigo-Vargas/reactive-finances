@@ -3,9 +3,8 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "@/client/*": [
-        "apps/client/src/*"
-      ],
+      "@/client/*": ["apps/client/src/*"],
+      "@reactive-finances/dto": ["libs/dto/src/index.ts"],
     },
   }
 }

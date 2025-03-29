@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useTransactions } from "../../../services/transaction/transactions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faTrash } from "@fortawesome/free-solid-svg-icons";
+import TransactionDialog from "./transaction-dialog";
 
 export const DashboardPage = () => {
   const { transactions } = useTransactions();
-  const [showModal, setShowModal] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <body
@@ -118,232 +119,14 @@ export const DashboardPage = () => {
               <div className="flex flex-end justify-end">
                 <button
                   className="button bg-green-500 mr-5"
+                  onClick={() => setShowModal(true)}
                   data-action="click->hello#open"
                 >
-                  {" "}
-                  New Transaction{" "}
+                  New Transaction
                 </button>
               </div>
               {showModal && (
-                <div className="modal">
-                  <div className="modal-content">
-                    <div className="w-128">
-                      <div className="m-auto">
-                        <header className="centered">
-                          <h1 className="text-white mb-5 text-center text-3xl font-bold">
-                            New transaction
-                          </h1>
-                        </header>
-                        <div className="bg-primary-300 p-5">
-                          <form
-                            className="contents"
-                            action="/transactions"
-                            accept-charset="UTF-8"
-                            method="post"
-                          >
-                            <input
-                              type="hidden"
-                              name="authenticity_token"
-                              value="szPbUlCq8DjYTqWamQUhdzYqqLHQFGFnZSrFLJxstb_JrhtDkKMV5wRHlStO7MqDvLVYsz33_F9MBGp-AQx6BA"
-                              autoComplete="off"
-                            />
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_description"
-                                >
-                                  Description
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <input
-                                  placeholder="Type a expense/income description"
-                                  className="form-control border-0"
-                                  type="text"
-                                  name="transaction[description]"
-                                  id="transaction_description"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_amount"
-                                >
-                                  Amount
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <input
-                                  placeholder="Type the expense/income amount"
-                                  className="form-control border-0"
-                                  type="text"
-                                  name="transaction[amount]"
-                                  id="transaction_amount"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_date"
-                                >
-                                  Date
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <input
-                                  placeholder="Date of expense/income"
-                                  className="form-control border-0"
-                                  type="text"
-                                  name="transaction[date]"
-                                  id="transaction_date"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_type"
-                                >
-                                  Type
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_type_expense"
-                                >
-                                  Expense
-                                </label>
-                                <input
-                                  type="radio"
-                                  value="expense"
-                                  checked={true}
-                                  name="transaction[type]"
-                                  id="transaction_type_expense"
-                                />
-                                <label
-                                  className="pl-5 text-white font-bold"
-                                  htmlFor="transaction_type_income"
-                                >
-                                  Income
-                                </label>
-                                <input
-                                  type="radio"
-                                  value="income"
-                                  name="transaction[type]"
-                                  id="transaction_type_income"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_credit_card_id"
-                                >
-                                  Credit Card
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <select
-                                  name="transaction[credit_card_id]"
-                                  id="transaction_credit_card_id"
-                                >
-                                  <option value="">Select a credit card</option>
-                                  <option value="1">Rico</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_invoice_date"
-                                >
-                                  Invoice date
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <input
-                                  placeholder="Credit card invoice"
-                                  className="form-control border-0"
-                                  type="text"
-                                  name="transaction[invoice_date]"
-                                  id="transaction_invoice_date"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex mb-5 items-center">
-                              <div className="w-2/6">
-                                <label
-                                  className="text-white font-bold"
-                                  htmlFor="transaction_category_id"
-                                >
-                                  Category
-                                </label>
-                              </div>
-                              <div className="w-4/6">
-                                <select
-                                  name="transaction[category_id]"
-                                  id="transaction_category_id"
-                                >
-                                  <option value="">Select a category</option>
-                                  <option value="20">ADP</option>
-                                  <option value="16">Caridade</option>
-                                  <option value="15">Carro</option>
-                                  <option value="3">Contas da casa</option>
-                                  <option value="17">Educacao</option>
-                                  <option value="24">Emergency fund</option>
-                                  <option value="19">Emergency fund</option>
-                                  <option value="8">Farmacia</option>
-                                  <option value="6">Gasolina</option>
-                                  <option value="4">GIovana</option>
-                                  <option value="18">Impostos</option>
-                                  <option value="13">Investimentos</option>
-                                  <option value="11">Lazer</option>
-                                  <option value="22">Mary Kay</option>
-                                  <option value="23">Mary Kay Venda</option>
-                                  <option value="7">Mercado</option>
-                                  <option value="9">Moto</option>
-                                  <option value="2">Restaurantes</option>
-                                  <option value="12">Salario</option>
-                                  <option value="21">Saude</option>
-                                  <option value="5">
-                                    Servicos de assinatura
-                                  </option>
-                                  <option value="1">Shopping</option>
-                                  <option value="14">Viagem</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="flex mt-10">
-                              <input
-                                type="submit"
-                                name="commit"
-                                value="Create Transaction"
-                                className="button bg-green-500 mr-5"
-                                data-action="click->hello#closeWithoutStopPropagation"
-                                data-disable-with="Create Transaction"
-                              />
-                              <button
-                                className="button bg-red-500"
-                                data-action="click->hello#close"
-                              >
-                                Cancel
-                              </button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <TransactionDialog />
               )}
             </div>
 
@@ -362,8 +145,7 @@ export const DashboardPage = () => {
                         <div className="w-4/12">{transaction.description}</div>
                         <div className="w-2/12">
                           <span className="text-red-500">
-                            {" "}
-                            ${transaction.amount}{" "}
+                            ${transaction.amount}
                           </span>
                         </div>
                         <div className="w-3/12 flex flex-col justify-start text-left">

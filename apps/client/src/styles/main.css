@@ -22,7 +22,7 @@
 }
 
 .modal-overlay {
-    @apply fixed top-0 left-0 h-full w-full z-10 bg-black bg-opacity-85
+    /* @apply fixed top-0 left-0 h-full w-full z-10 bg-black bg-opacity-85 */
 }
 
 .modal {
@@ -31,10 +31,6 @@
 
 .modal-content {
     @apply flex items-center justify-center h-full
-}
-
-body.modal-closed .modal-overlay, body.modal-closed .modal {
-    @apply hidden
 }
 
 body {

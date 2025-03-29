@@ -1,3 +1,11 @@
+# Compiled Output
+dist
+
+# Project Dependencies
 node_modules/
+
+# Generated Files
 .nx
+
+# Environment Variables
 .env
